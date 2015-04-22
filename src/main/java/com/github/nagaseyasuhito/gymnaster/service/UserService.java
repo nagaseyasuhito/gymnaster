@@ -4,7 +4,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 
-import com.github.nagaseyasuhito.gymnaster.UserNotFoundException;
 import com.github.nagaseyasuhito.gymnaster.dao.UserDao;
 import com.github.nagaseyasuhito.gymnaster.entity.User;
 
@@ -20,9 +19,5 @@ public class UserService {
 
 		this.userDao.persist(user);
 		return user;
-	}
-
-	public User show(@NotNull Integer id) {
-		return this.userDao.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 	}
 }
