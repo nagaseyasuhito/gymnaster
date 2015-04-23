@@ -1,20 +1,17 @@
 package com.github.nagaseyasuhito.gymnaster.dao;
 
-import java.util.Optional;
-
-import javax.validation.constraints.NotNull;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
 
 import com.github.nagaseyasuhito.gymnaster.entity.User;
-import com.github.nagaseyasuhito.gymnaster.entity.User_;
 
-public class UserDao extends BaseDao<User, Integer> {
+public class UserDao {
 
-	@Override
-	protected Class<User> getEntityClass() {
-		return User.class;
-	}
+	@PersistenceContext
+	private EntityManager entityManager;
 
-	public Optional<Long> countNumberOfInvitees(@NotNull Integer id) {
-		return this.getSingleResult((b, q, r) -> q.select(b.count(r)).where(b.equal(r.get(User_.id), id)), Long.class);
+	public void persist(@Valid User entity) {
+		this.entityManager.persist(entity);
 	}
 }

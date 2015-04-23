@@ -8,9 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlTransient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,7 +15,6 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode(of = { "id" })
-@XmlAccessorType(XmlAccessType.FIELD)
 public class User implements Serializable {
 	private static final long serialVersionUID = -8384277771400867677L;
 
@@ -27,7 +23,6 @@ public class User implements Serializable {
 	private Integer id;
 
 	@Version
-	@XmlTransient
 	private Integer version;
 
 	@Column(nullable = false, unique = true)
