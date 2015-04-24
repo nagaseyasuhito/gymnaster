@@ -15,7 +15,7 @@ asadmin create-jdbc-connection-pool \
 	--datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlXADataSource \
 	--restype javax.sql.XADataSource \
 	--property url=jdbc\\:mysql\\://$RDS_HOSTNAME\\:$RDS_PORT/$RDS_DB_NAME:user=$RDS_USERNAME:password=$RDS_PASSWORD \
-	$RDS_DB_NAME
+	${project.artifactId}
 
 asadmin create-jdbc-resource \
 	--connectionpoolid ${project.artifactId} \
