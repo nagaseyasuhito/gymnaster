@@ -31,6 +31,7 @@
 		<beanstalk.versionLabel>${project.version}-${maven.build.timestamp}</beanstalk.versionLabel>
 		<beanstalk.environmentName>${project.artifactId}</beanstalk.environmentName>
 		<beanstalk.cnamePrefix>${project.artifactId}</beanstalk.cnamePrefix>
+		<beanstalker.region>ap-northeast-1</beanstalker.region>
 		<beanstalk.s3Bucket>${project.artifactId}</beanstalk.s3Bucket>
 		<beanstalk.s3Key>${project.build.finalName}.${project.packaging}</beanstalk.s3Key>
 		<beanstalk.multipartUpload>false</beanstalk.multipartUpload>
