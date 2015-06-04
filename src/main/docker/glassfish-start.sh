@@ -11,11 +11,19 @@ zip /var/app.zip -r .
 
 asadmin start-domain
 
+# for H2 Database Engine
 asadmin create-jdbc-connection-pool \
-	--datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlXADataSource \
+	--datasourceclassname org.h2.jdbcx.JdbcDataSource \
 	--restype javax.sql.XADataSource \
-	--property url=jdbc\\:mysql\\://$RDS_HOSTNAME\\:$RDS_PORT/$RDS_DB_NAME:user=$RDS_USERNAME:password=$RDS_PASSWORD \
+	--property url=jdbc\\:h2\\:mem\\: \
 	${project.artifactId}
+
+# for MySQL
+# asadmin create-jdbc-connection-pool \
+#	--datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlXADataSource \
+#	--restype javax.sql.XADataSource \
+#	--property url=jdbc\\:mysql\\://$RDS_HOSTNAME\\:$RDS_PORT/$RDS_DB_NAME:user=$RDS_USERNAME:password=$RDS_PASSWORD \
+#	${project.artifactId}
 
 asadmin create-jdbc-resource \
 	--connectionpoolid ${project.artifactId} \
